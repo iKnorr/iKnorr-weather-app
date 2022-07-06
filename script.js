@@ -47,6 +47,32 @@ const error = () => {
 
 navigator.geolocation.getCurrentPosition(success, error);
 
+// Get data function
+const getData = function (data) {
+  // humidityIcon.innerHTML = '<i class="icons fa-solid fa-droplet"></i>';
+  humidity.innerText = `${data.main.humidity}%`;
+
+  // windIcon.innerHTML = '<i class="icons fa-solid fa-wind"></i>';
+  wind.innerText = `${data.wind.speed}m/s`;
+
+  // cloudsIcon.innerHTML = '<i class="icons fa-solid fa-cloud"></i>';
+  clouds.innerText = `${data.clouds.all}%`;
+
+  cityName.innerText = `${data.name},${data.sys.country}`;
+
+  icons.forEach(icon => {
+    icon.classList.remove('hidden');
+  });
+  // const tempKelvin = data.main.temp;
+  // const tempCelsius = parseInt(tempKelvin - 273.15);
+  // temperature.innerText = `${tempCelsius}°`;
+  temperature.innerText = `${parseInt(data.main.temp)}°`;
+  feelsLikeTemp.innerText = `feels like ${parseInt(data.main.feels_like)}°`;
+
+  weatherIcon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+  weatherMain.innerText = data.weather[0].description;
+};
+
 // On window load display local weather
 window.addEventListener('load', () => {
   const getMyLocationWeather = async function () {
@@ -59,35 +85,12 @@ window.addEventListener('load', () => {
     // icons.forEach(icon => {
     //   icon.classList.remove('hidden');
     // });
-    setTimeout(() => {
-      getData(data);
-    }, 1000);
+    // setTimeout(() => {
+    getData(data);
+    // }, 1000);
   };
   getMyLocationWeather();
 });
-
-// Get data function
-const getData = function (data) {
-  humidityIcon.innerHTML = '<i class="icons fa-solid fa-droplet"></i>';
-  humidity.innerText = `${data.main.humidity}%`;
-
-  windIcon.innerHTML = '<i class="icons fa-solid fa-wind"></i>';
-  wind.innerText = `${data.wind.speed}m/s`;
-
-  cloudsIcon.innerHTML = '<i class="icons fa-solid fa-cloud"></i>';
-  clouds.innerText = `${data.clouds.all}%`;
-
-  cityName.innerText = `${data.name},${data.sys.country}`;
-
-  // const tempKelvin = data.main.temp;
-  // const tempCelsius = parseInt(tempKelvin - 273.15);
-  // temperature.innerText = `${tempCelsius}°`;
-  temperature.innerText = `${parseInt(data.main.temp)}°`;
-  feelsLikeTemp.innerText = `feels like ${parseInt(data.main.feels_like)}°`;
-
-  weatherIcon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-  weatherMain.innerText = data.weather[0].description;
-};
 
 // Calling API / displaying content
 searchBtn.addEventListener('click', function (e) {
