@@ -76,6 +76,7 @@ button {
   justify-content: space-evenly;
   width: 100%;
   margin-bottom: 2rem;
+  font-size: 1.2rem;
 }
 
 .wrapper {
@@ -94,6 +95,7 @@ button {
 .area {
   display: flex;
   align-items: baseline;
+  text-align: center;
 }
 
 .area h2 {
