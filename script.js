@@ -29,6 +29,43 @@ const weatherMain = document.querySelector('.weather-main');
 
 const locationBtn = document.querySelector('.location');
 
+// get local weather on page load
+let lat;
+let lon;
+
+// Geolocation
+const success = function (pos) {
+  const position = pos.coords;
+  lat = position.latitude;
+  lon = position.longitude;
+};
+
+const error = () => {
+  cityName.innerText =
+    'Unable to find your location. Turn on device location or use search!';
+};
+
+navigator.geolocation.getCurrentPosition(success, error);
+
+// On window load display local weather
+window.addEventListener('load', () => {
+  const getMyLocationWeather = async function () {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API}&units=metric`
+    );
+    const data = await response.json();
+    console.log(data);
+
+    // icons.forEach(icon => {
+    //   icon.classList.remove('hidden');
+    // });
+    setTimeout(() => {
+      getData(data);
+    }, 1000);
+  };
+  getMyLocationWeather();
+});
+
 // Get data function
 const getData = function (data) {
   humidityIcon.innerHTML = '<i class="icons fa-solid fa-droplet"></i>';
@@ -73,39 +110,4 @@ searchBtn.addEventListener('click', function (e) {
   getWeatherData();
 
   input.value = '';
-});
-
-// get local weather on page load
-let lat;
-let lon;
-
-// Geolocation
-const success = function (pos) {
-  const position = pos.coords;
-  lat = position.latitude;
-  lon = position.longitude;
-};
-
-const error = () => {
-  cityName.innerText = 'Unable to find your location';
-};
-
-navigator.geolocation.getCurrentPosition(success, error);
-
-// On window load display local weather
-window.addEventListener('load', () => {
-  const getMyLocationWeather = async function () {
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API}&units=metric`
-    );
-    const data = await response.json();
-    console.log(data);
-
-    // icons.forEach(icon => {
-    //   icon.classList.remove('hidden');
-    // });
-
-    getData(data);
-  };
-  getMyLocationWeather();
 });
