@@ -63,10 +63,8 @@ button {
   flex-direction: column;
   /* background: rgba(0, 0, 0, 0.7); */
   background: rgba(24, 116, 152, 0.8);
-  /* background: rgba(96, 118, 204, 0.8); */
   width: 60%;
   max-width: 450px;
-  min-height: 40%;
   padding: 2rem;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
