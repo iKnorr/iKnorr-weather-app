@@ -2,29 +2,41 @@
 
 // https://api.openweathermap.org/data/2.5/weather?q=London&appid=4739904bd0e17a0b10ab5e88b48f19b7
 const API = '4739904bd0e17a0b10ab5e88b48f19b7';
+
 const input = document.querySelector('input');
 const searchBtn = document.querySelector('button');
+
 const cityName = document.querySelector('.city-name');
 const country = document.querySelector('.country');
 const area = document.querySelector('.area');
+
 const temperature = document.querySelector('.temperature');
+const feelsLikeTemp = document.querySelector('.feels-like-temp');
+
 const humidityIcon = document.querySelector('.humidity-icon');
 const humidity = document.querySelector('.humidity');
+
 const windIcon = document.querySelector('.wind-icon');
 const wind = document.querySelector('.wind');
+
 const cloudsIcon = document.querySelector('.clouds-icon');
 const clouds = document.querySelector('.clouds');
+
 const icons = document.querySelectorAll('.icons');
+
 const weatherIcon = document.querySelector('#weather-icon');
 const weatherMain = document.querySelector('.weather-main');
+
 const locationBtn = document.querySelector('.location');
 
 // Get data function
 const getData = function (data) {
   humidityIcon.innerHTML = '<i class="icons fa-solid fa-droplet"></i>';
   humidity.innerText = `${data.main.humidity}%`;
+
   windIcon.innerHTML = '<i class="icons fa-solid fa-wind"></i>';
   wind.innerText = `${data.wind.speed}m/s`;
+
   cloudsIcon.innerHTML = '<i class="icons fa-solid fa-cloud"></i>';
   clouds.innerText = `${data.clouds.all}%`;
 
@@ -34,6 +46,7 @@ const getData = function (data) {
   // const tempCelsius = parseInt(tempKelvin - 273.15);
   // temperature.innerText = `${tempCelsius}°`;
   temperature.innerText = `${parseInt(data.main.temp)}°`;
+  feelsLikeTemp.innerText = `feels like ${parseInt(data.main.feels_like)}°`;
 
   weatherIcon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
   weatherMain.innerText = data.weather[0].description;

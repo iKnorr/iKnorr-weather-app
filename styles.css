@@ -106,6 +106,10 @@ button {
   font-size: 4rem;
 }
 
+.feels-like-temp {
+  margin-bottom: 1.5rem;
+}
+
 #weather-icon {
   margin-bottom: 2rem;
 }
