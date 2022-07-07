@@ -17,7 +17,7 @@ body {
   place-items: center;
   height: 100vh;
   color: white;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 form {
@@ -64,16 +64,14 @@ input {
 }
 
 .info-wrapper {
-  /* background-image: url('https://source.unsplash.com/random/?weather'); */
-  background-image: url('appWeather.png');
+  background-image: url('images/weatherApp.png');
   background-size: cover;
   background-position: 50% 100%;
+  text-align: center;
   /* background-attachment: fixed; */
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  /* background: rgba(0, 0, 0, 0.7); */
-  /* background: rgba(24, 116, 152, 0.8); */
+  /* display: flex; */
+  /* align-items: center; */
+  /* flex-direction: column; */
   /* width: 60%;
   max-width: 450px; */
   padding: 2rem;
@@ -128,11 +126,14 @@ input {
 
 @media only screen and (max-width: 650px) {
   body {
-    background-image: url('appWeather.png');
+    background-image: url('images/weatherApp.png');
   }
 
-  form {
-    margin: -2rem 0 2rem 0;
+  /* form {
+  } */
+
+  div.search-form {
+    margin: -3rem 0 4rem 0;
   }
 
   div.info-wrapper {
