@@ -26,7 +26,7 @@ input {
   font-weight: bold;
 }
 
-button {
+.search-btn {
   /* background-color: #ffcd00; */
   background-color: #eb5353;
   border-radius: 50%;
@@ -35,6 +35,12 @@ button {
   border-color: #eb5353;
   font-weight: bold;
   color: white;
+  transition: 0.3s ease-in-out;
+}
+
+.search-btn:hover {
+  background-color: #f00c0c;
+  transform: scale(1.1);
 }
 
 .search-form {
@@ -44,10 +50,8 @@ button {
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  place-items: center;
   height: 90vh;
   color: white;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
@@ -108,8 +112,15 @@ button {
 
 .feels-like-temp {
   margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 #weather-icon {
   margin-bottom: 2rem;
+}
+
+@media only screen and (max-width: 650px) {
+  div.info {
+    font-size: 1rem;
+  }
 }

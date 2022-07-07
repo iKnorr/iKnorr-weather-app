@@ -35,13 +35,14 @@ let lon;
 
 // Geolocation
 const success = function (pos) {
+  console.log(pos);
   const position = pos.coords;
   lat = position.latitude;
   lon = position.longitude;
 };
 
 const error = () => {
-  cityName.innerText =
+  feelsLikeTemp.innerText =
     'Unable to find your location. Turn on device location or use search!';
 };
 
@@ -79,12 +80,11 @@ window.addEventListener('load', () => {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API}&units=metric`
     );
+    if (!response.ok) {
+      throw new Error('Problem getting location data');
+    }
     const data = await response.json();
     console.log(data);
-
-    // icons.forEach(icon => {
-    //   icon.classList.remove('hidden');
-    // });
     // setTimeout(() => {
     getData(data);
     // }, 1000);
