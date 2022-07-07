@@ -84,7 +84,7 @@ input {
 .info {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   width: 100%;
   margin-bottom: 2rem;
   font-size: 1.2rem;
@@ -132,7 +132,7 @@ input {
   }
 
   form {
-    margin: -5rem 0 3rem 0;
+    margin: -2rem 0 2rem 0;
   }
 
   div.info-wrapper {
@@ -142,6 +142,6 @@ input {
   }
 
   div.info {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 }
