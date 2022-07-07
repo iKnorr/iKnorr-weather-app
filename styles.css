@@ -5,16 +5,23 @@
 }
 
 body {
-  background-image: url('https://source.unsplash.com/random/?weather');
+  background: #76b7b7;
+  /* background-image: url('appWeather.png'); */
+
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   height: 100vh;
   font-family: 'Roboto Mono', monospace;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 form {
-  margin-bottom: 2rem;
+  margin: 2rem 0 2rem 0;
 }
 
 input {
@@ -49,26 +56,26 @@ input {
   margin-bottom: 2rem;
 }
 
-.container {
-  display: grid;
-  place-items: center;
-  height: 90vh;
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-}
+/* .container {
+} */
 
 .container h1 {
   font-size: 4rem;
 }
 
 .info-wrapper {
+  /* background-image: url('https://source.unsplash.com/random/?weather'); */
+  background-image: url('appWeather.png');
+  background-size: cover;
+  background-position: 50% 100%;
+  /* background-attachment: fixed; */
   display: flex;
   align-items: center;
   flex-direction: column;
   /* background: rgba(0, 0, 0, 0.7); */
-  background: rgba(24, 116, 152, 0.8);
-  width: 60%;
-  max-width: 450px;
+  /* background: rgba(24, 116, 152, 0.8); */
+  /* width: 60%;
+  max-width: 450px; */
   padding: 2rem;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -116,10 +123,24 @@ input {
 }
 
 #weather-icon {
-  margin-bottom: 2rem;
+  margin-bottom: 6rem;
 }
 
 @media only screen and (max-width: 650px) {
+  body {
+    background-image: url('appWeather.png');
+  }
+
+  form {
+    margin: -5rem 0 3rem 0;
+  }
+
+  div.info-wrapper {
+    background-image: none;
+    border-radius: none;
+    box-shadow: none;
+  }
+
   div.info {
     font-size: 1rem;
   }
