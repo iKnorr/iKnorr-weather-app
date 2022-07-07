@@ -6,8 +6,6 @@
 
 body {
   background: #76b7b7;
-  /* background-image: url('appWeather.png'); */
-
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -34,7 +32,6 @@ input {
 }
 
 .search-btn {
-  /* background-color: #ffcd00; */
   background-color: #eb5353;
   border-radius: 50%;
   margin-inline: 1rem;
@@ -64,17 +61,14 @@ input {
 }
 
 .info-wrapper {
-  background-image: url('images/weatherApp.png');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url('images/weatherApp.png');
   background-size: cover;
-  background-position: 50% 100%;
+  background-position: 50% 80%;
   text-align: center;
-  /* background-attachment: fixed; */
-  /* display: flex; */
-  /* align-items: center; */
-  /* flex-direction: column; */
   /* width: 60%;
   max-width: 450px; */
-  padding: 2rem;
+  padding-inline: 11rem;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -101,11 +95,11 @@ input {
   display: none;
 }
 
-.area {
+/* .area {
   display: flex;
   align-items: baseline;
   text-align: center;
-}
+} */
 
 .area h2 {
   font-size: 2rem;
@@ -129,9 +123,6 @@ input {
     background-image: url('images/weatherApp.png');
   }
 
-  /* form {
-  } */
-
   div.search-form {
     margin: -3rem 0 4rem 0;
   }
@@ -140,6 +131,7 @@ input {
     background-image: none;
     border-radius: none;
     box-shadow: none;
+    padding: 2rem;
   }
 
   div.info {
