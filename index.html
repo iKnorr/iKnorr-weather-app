@@ -16,35 +16,34 @@
     <title>iKnorr's Weather App</title>
   </head>
   <body>
-    <!-- <div class="container"> -->
-      <!-- <h1>iKnorr's Weather App</h1> -->
-      <div class="error-msg"></div>
-      <div class="info-wrapper">
-        <form >
-          <div class="search-form">
-            <input type="text" placeholder="Enter a City" />
-            <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-          </div>
-        </form>
-        <div class="info">
-          <div class="humidity-wrapper wrapper">
-            <i class="icons hidden fa-solid fa-droplet"></i>
-            <!-- <p class="humidity-icon"></p> -->
-            <p class="humidity"></p>
-          </div>
-          <div class="wind-wrapper wrapper">
-            <i class="icons hidden fa-solid fa-wind"></i>
-            <!-- <p class="wind-icon"></p> -->
-            <p class="wind"></i></p>
-          </div>
-          <div class="couds wrapper wrapper">
-            <i class="icons hidden fa-solid fa-cloud"></i>
-            <!-- <p class="clouds-icon"></p> -->
-            <p class="clouds"></p>
-          </div>
+    <div class="info-wrapper">
+      <form >
+        <div class="search-form">
+          <input type="text" placeholder="Enter a City" />
+          <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
-        <h2 class="temperature"></h2>
-        <p class="feels-like-temp"></p>
+        <span class="error-msg"></span>
+      </form>
+      <div class="info">
+        <div class="humidity-wrapper wrapper">
+          <i class="icons hidden fa-solid fa-droplet"></i>
+          <!-- <p class="humidity-icon"></p> -->
+          <p class="humidity"></p>
+        </div>
+        <div class="wind-wrapper wrapper">
+          <i class="icons hidden fa-solid fa-wind"></i>
+          <!-- <p class="wind-icon"></p> -->
+          <p class="wind"></i></p>
+        </div>
+        <div class="couds wrapper wrapper">
+          <i class="icons hidden fa-solid fa-cloud"></i>
+          <!-- <p class="clouds-icon"></p> -->
+          <p class="clouds"></p>
+        </div>
+      </div>
+      <div class="ld-spinner"></div>
+      <h2 class="temperature"></h2>
+      <p class="feels-like-temp"></p>
         <div class="area">
           <h2 class="city-name"></h2>
         </div>
@@ -52,7 +51,6 @@
         <div class="weather-main"></div>
         <img src="" alt="" id="weather-icon">
       </div>
-    <!-- </div> -->
     <script src="script.js"></script>
   </body>
 </html>
