@@ -3,6 +3,10 @@
 // https://api.openweathermap.org/data/2.5/weather?q=London&appid=4739904bd0e17a0b10ab5e88b48f19b7
 const API = '4739904bd0e17a0b10ab5e88b48f19b7';
 
+const errorMsg = document.querySelector('.error-msg');
+
+const infoWrapper = document.querySelector('.info-wrapper');
+
 const input = document.querySelector('input');
 const searchBtn = document.querySelector('button');
 
@@ -29,24 +33,15 @@ const weatherMain = document.querySelector('.weather-main');
 
 const locationBtn = document.querySelector('.location');
 
-// get local weather on page load
-let lat;
-let lon;
-
-// Geolocation
-const success = function (pos) {
-  console.log(pos);
-  const position = pos.coords;
-  lat = position.latitude;
-  lon = position.longitude;
+// Error msg function
+const errorMessage = function (msg) {
+  errorMsg.insertAdjacentText('afterbegin', msg);
+  // setTimeout(() => {
+  //   // errorMsg.style.display = 'none';
+  //   msg = '';
+  // }, 1000);
+  // errorMsg.style.oacity = 0;
 };
-
-const error = () => {
-  feelsLikeTemp.innerText =
-    'Unable to find your location. Turn on device location or use search!';
-};
-
-navigator.geolocation.getCurrentPosition(success, error);
 
 // Get data function
 const getData = function (data) {
@@ -64,9 +59,7 @@ const getData = function (data) {
   icons.forEach(icon => {
     icon.classList.remove('hidden');
   });
-  // const tempKelvin = data.main.temp;
-  // const tempCelsius = parseInt(tempKelvin - 273.15);
-  // temperature.innerText = `${tempCelsius}°`;
+
   temperature.innerText = `${parseInt(data.main.temp)}°`;
   feelsLikeTemp.innerText = `feels like ${parseInt(data.main.feels_like)}°`;
 
@@ -74,15 +67,67 @@ const getData = function (data) {
   weatherMain.innerText = data.weather[0].description;
 };
 
+// const getPosition = function () {
+//   return new Promise(function (resolve, reject) {
+//     // navigator.geolocation.getCurrentPosition(
+//     //   position => resolve(position),
+//     //   err => reject(err)
+//     // );
+//     navigator.geolocation.getCurrentPosition(resolve, reject);
+//   });
+// };
+
+// getPosition().then(pos => console.log(pos));
+
+// ('https://geocode.xyz/51.50354,-0.12768?geoit=xml&auth=662534729365838403424x3629');
+// const whereAmI = function () {
+//   getPosition().then(pos => {
+//     const { latitude: lat, longitude: lng } = pos.coords;
+
+//     return fetch(
+//       `https://geocode.xyz/${lat},${lng}?geoit=json&auth=662534729365838403424x3629`
+//     )
+//       .then(res => {
+//         return res.json();
+//       })
+//       .then(data => {
+//         console.log(data);
+//       });
+//   });
+// };
+
+// whereAmI();
+
+// get local weather on page load
+let lat;
+let lon;
+
+// Geolocation
+const success = function (pos) {
+  console.log(pos);
+  const position = pos.coords;
+  lat = position.latitude;
+  lon = position.longitude;
+};
+
+// const error = () => {
+//   errorMsg.innerText =
+//     'Unable to find your location. Turn on device location or use search!';
+// };
+
+navigator.geolocation.getCurrentPosition(success);
+
 // On window load display local weather
 window.addEventListener('load', () => {
   const getMyLocationWeather = async function () {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API}&units=metric`
     );
-    if (!response.ok) {
-      throw new Error('Problem getting location data');
-    }
+    // if (!response.ok) {
+    //   errorMessage('Problem getting location data');
+    //   // errorMsg.innerText = 'Unable to find your location.';
+    //   throw new Error('Problem getting location data');
+    // }
     const data = await response.json();
     console.log(data);
     // setTimeout(() => {
@@ -98,17 +143,26 @@ searchBtn.addEventListener('click', function (e) {
   const searchInput = input.value;
 
   const getWeatherData = async function () {
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&appid=${API}&units=metric`
-    );
-    const data = await response.json();
-    console.log(data);
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&appid=${API}&units=metric`
+      );
+      if (!response.ok) {
+        // errorMessage('heeeeelp');
+        throw new Error(`City not found (${response.status})`);
+      }
+      errorMessage('');
+      const data = await response.json();
+      console.log(data);
 
-    // icons.forEach(icon => {
-    //   icon.classList.remove('hidden');
-    // });
-
-    getData(data);
+      getData(data);
+    } catch (err) {
+      console.log('caught it');
+      errorMessage('Problem getting location');
+      // setTimeout(() => {
+      //   errorMessage();
+      // }, 500);
+    }
   };
   getWeatherData();
 

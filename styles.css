@@ -29,6 +29,20 @@ input {
   width: 100%;
   font-size: large;
   font-weight: bold;
+  border: solid 2px #76b7b7;
+}
+
+input:focus {
+  outline: none !important;
+  border-color: #ccc;
+}
+
+.error-msg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
 }
 
 .search-btn {
@@ -36,14 +50,14 @@ input {
   border-radius: 50%;
   margin-inline: 1rem;
   padding: 0.6rem;
-  border-color: #eb5353;
+  border: solid 2px #76b7b7;
   font-weight: bold;
   color: white;
   transition: 0.3s ease-in-out;
 }
 
 .search-btn:hover {
-  background-color: #f00c0c;
+  background-color: #ee3737;
   transform: scale(1.1);
 }
 
@@ -66,8 +80,7 @@ input {
   background-size: cover;
   background-position: 50% 80%;
   text-align: center;
-  /* width: 60%;
-  max-width: 450px; */
+  max-width: 70rem;
   padding-inline: 11rem;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -88,7 +101,7 @@ input {
 }
 
 .icons {
-  margin-inline: 0.5rem;
+  margin-inline: 0.8rem;
 }
 
 .icons.hidden {
