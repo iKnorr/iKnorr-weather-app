@@ -39,9 +39,9 @@ input:focus {
   outline: none !important;
   border-color: #ccc;
 }
-/*
+
 .ld-spinner {
-  display: inline-block;
+  display: none;
   width: 80px;
   height: 80px;
 }
@@ -63,7 +63,7 @@ input:focus {
   100% {
     transform: rotate(360deg);
   }
-} */
+}
 
 .error-msg {
   display: flex;

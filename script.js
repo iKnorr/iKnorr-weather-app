@@ -61,6 +61,7 @@ let lat;
 let lon;
 
 // Geolocation
+
 const success = function (pos) {
   console.log(pos);
   const position = pos.coords;
@@ -82,9 +83,9 @@ const catchError = function (err) {
   } else {
     errorMsg.textContent = err;
   }
-  setTimeout(() => {
-    errorMsg.textContent = '';
-  }, 2000);
+  // setTimeout(() => {
+  //   errorMsg.textContent = '';
+  // }, 2000);
 };
 
 // On window load display local weather
@@ -96,10 +97,13 @@ window.addEventListener('load', () => {
       );
       if (!response.ok) {
         throw new Error(
-          `Something went wrong 😱 (${response.status}). \nPlease turn on location device, reload page or use search.`
+          `Something went wrong 😱 (${response.status}). Please turn on location device, reload page or use search.`
         );
       }
+      ldSpinner.style.display = 'inline-block';
       const data = await response.json();
+      ldSpinner.style.display = 'none';
+
       console.log(data);
       getData(data);
     } catch (err) {
