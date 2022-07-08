@@ -67,13 +67,17 @@ input:focus {
 
 .error-msg {
   display: flex;
+  justify-content: center;
   width: 20rem;
   margin-top: -2rem;
   color: #ee3737;
   text-shadow: 1px 1px 3px rgba(242, 242, 242, 0.6);
 }
 
-.search-btn {
+.btn {
+  display: block;
+  height: 2.5rem;
+  width: 3.5rem;
   background-color: #eb5353;
   border-radius: 50%;
   margin-inline: 1rem;
@@ -84,7 +88,7 @@ input:focus {
   transition: 0.3s ease-in-out;
 }
 
-.search-btn:hover {
+.btn:hover {
   background-color: #ee3737;
   transform: scale(1.1);
 }

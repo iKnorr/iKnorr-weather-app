@@ -9,7 +9,8 @@ const errorMsg = document.querySelector('.error-msg');
 const infoWrapper = document.querySelector('.info-wrapper');
 
 const input = document.querySelector('input');
-const searchBtn = document.querySelector('button');
+const searchBtn = document.querySelector('.search-btn');
+const geoLocBtn = document.querySelector('.geo-loc-btn');
 
 const cityName = document.querySelector('.city-name');
 const country = document.querySelector('.country');
@@ -34,6 +35,28 @@ const weatherMain = document.querySelector('.weather-main');
 
 const locationBtn = document.querySelector('.location');
 
+// get local weather on page load
+let lat;
+let lon;
+
+// Geolocation
+const success = function (pos) {
+  console.log(pos);
+  lat = pos.coords.latitude;
+  lon = pos.coords.longitude;
+};
+
+const error = () => {
+  errorMsg.innerText =
+    'Unable to find your location. Turn on device location or use search!';
+};
+
+navigator.geolocation.getCurrentPosition(success, error, {
+  maximumAge: 10000,
+  timeout: 5000,
+  enableHighAccuracy: true,
+});
+
 // Get data function
 const getData = function (data) {
   errorMsg.textContent = '';
@@ -55,26 +78,6 @@ const getData = function (data) {
   weatherIcon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
   weatherMain.innerText = data.weather[0].description;
 };
-
-// get local weather on page load
-let lat;
-let lon;
-
-// Geolocation
-
-const success = function (pos) {
-  console.log(pos);
-  const position = pos.coords;
-  lat = position.latitude;
-  lon = position.longitude;
-};
-
-const error = () => {
-  errorMsg.innerText =
-    'Unable to find your location. Turn on device location or use search!';
-};
-
-navigator.geolocation.getCurrentPosition(success, error, { timeout: 2000 });
 
 // Error handling for api calls
 const catchError = function (err) {
@@ -126,7 +129,9 @@ searchBtn.addEventListener('click', function (e) {
       if (!response.ok) {
         throw new Error(`City not found (${response.status})`);
       }
+      // ldSpinner.style.display = 'inline-block';
       const data = await response.json();
+      // ldSpinner.style.display = 'inline-block';
       console.log(data);
 
       getData(data);
