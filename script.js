@@ -131,7 +131,7 @@ searchBtn.addEventListener('click', function (e) {
       }
       // ldSpinner.style.display = 'inline-block';
       const data = await response.json();
-      // ldSpinner.style.display = 'inline-block';
+      ldSpinner.style.display = 'none';
       console.log(data);
 
       getData(data);
