@@ -1,6 +1,5 @@
 // Setting variables
 
-// https://api.openweathermap.org/data/2.5/weather?q=London&appid=4739904bd0e17a0b10ab5e88b48f19b7
 const API = '4739904bd0e17a0b10ab5e88b48f19b7';
 
 const ldSpinner = document.querySelector('.ld-spinner');
@@ -40,23 +39,24 @@ let lat;
 let lon;
 
 // Geolocation
-const success = function (pos) {
-  console.log(pos);
-  lat = pos.coords.latitude;
-  lon = pos.coords.longitude;
+const whereAmI = function () {
+  const success = function (pos) {
+    console.log(pos);
+    lat = pos.coords.latitude;
+    lon = pos.coords.longitude;
+  };
+
+  const error = () => {
+    errorMsg.innerText = '';
+  };
+
+  navigator.geolocation.getCurrentPosition(success, error, {
+    maximumAge: 10000,
+    timeout: 5000,
+    enableHighAccuracy: true,
+  });
 };
-
-const error = () => {
-  errorMsg.innerText =
-    'Unable to find your location. Turn on device location or use search!';
-};
-
-navigator.geolocation.getCurrentPosition(success, error, {
-  maximumAge: 10000,
-  timeout: 5000,
-  enableHighAccuracy: true,
-});
-
+whereAmI();
 // Get data function
 const getData = function (data) {
   errorMsg.textContent = '';
@@ -86,13 +86,10 @@ const catchError = function (err) {
   } else {
     errorMsg.textContent = err;
   }
-  // setTimeout(() => {
-  //   errorMsg.textContent = '';
-  // }, 2000);
 };
 
-// On window load display local weather
-window.addEventListener('load', () => {
+geoLocBtn.addEventListener('click', () => {
+  whereAmI();
   const getMyLocationWeather = async function () {
     try {
       const response = await fetch(
@@ -103,9 +100,34 @@ window.addEventListener('load', () => {
           `Something went wrong 😱 (${response.status}). Please turn on location device, reload page or use search.`
         );
       }
-      ldSpinner.style.display = 'inline-block';
+      // ldSpinner.style.display = 'inline-block';
       const data = await response.json();
-      ldSpinner.style.display = 'none';
+      // ldSpinner.style.display = 'none';
+
+      console.log(data);
+      getData(data);
+    } catch (err) {
+      catchError(err);
+    }
+  };
+  getMyLocationWeather();
+});
+
+// On window load display local weather
+window.addEventListener('load', () => {
+  const getMyLocationWeather = async function () {
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=nizza&appid=${API}&units=metric`
+      );
+      if (!response.ok) {
+        throw new Error(
+          `Something went wrong 😱 (${response.status}). Please turn on location device, reload page or use search.`
+        );
+      }
+      // ldSpinner.style.display = 'inline-block';
+      const data = await response.json();
+      // ldSpinner.style.display = 'none';
 
       console.log(data);
       getData(data);
@@ -120,6 +142,7 @@ window.addEventListener('load', () => {
 searchBtn.addEventListener('click', function (e) {
   e.preventDefault();
   const searchInput = input.value;
+  console.log(searchInput);
 
   const getWeatherData = async function () {
     try {
@@ -131,7 +154,7 @@ searchBtn.addEventListener('click', function (e) {
       }
       // ldSpinner.style.display = 'inline-block';
       const data = await response.json();
-      ldSpinner.style.display = 'none';
+      // ldSpinner.style.display = 'none';
       console.log(data);
 
       getData(data);

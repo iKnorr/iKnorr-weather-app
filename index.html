@@ -1,57 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
-    <script
-      src="https://kit.fontawesome.com/d1a99bc0f9.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-    <link rel="manifest" href="images/site.webmanifest">
-    <title>iKnorr's Weather App</title>
-  </head>
-  <body>
-    <div class="info-wrapper">
-      <form >
-        <div class="search-form">
-          <!-- <button class="geo-loc-btn btn"><i class="fa-solid fa-location-dot"></i></button> -->
-          <input type="text" placeholder="Enter a City" />
-          <button class="search-btn btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </div>
-        <span class="error-msg"></span>
-      </form>
-        <div class="info">
-          <div class="humidity-wrapper wrapper">
-            <i class="icons hidden fa-solid fa-droplet"></i>
-            <!-- <p class="humidity-icon"></p> -->
-            <p class="humidity"></p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://kit.fontawesome.com/d1a99bc0f9.js" crossorigin="anonymous"></script>
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="manifest" href="images/site.webmanifest">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <title>iKnorr's Weather App</title>
+</head>
+
+<body>
+  <div class="info-wrapper">
+    <div class="search-wrapper">
+      <div class="search-bar">
+        <button class="geo-loc-btn btn"><i class="fa-solid fa-location-dot"></i></button>
+        <form>
+          <div class="search-form">
+            <input type="text" placeholder="Enter a City" />
+            <button class="search-btn btn"><i class="fa-solid fa-magnifying-glass"></i></button>
           </div>
-          <div class="wind-wrapper wrapper">
-            <i class="icons hidden fa-solid fa-wind"></i>
-            <!-- <p class="wind-icon"></p> -->
-            <p class="wind"></i></p>
-          </div>
-          <div class="couds wrapper wrapper">
-            <i class="icons hidden fa-solid fa-cloud"></i>
-            <!-- <p class="clouds-icon"></p> -->
-            <p class="clouds"></p>
-          </div>
-        </div>
-        <div class="ld-spinner"></div>
-        <h2 class="temperature"></h2>
-        <p class="feels-like-temp"></p>
-        <div class="area">
-          <h2 class="city-name"></h2>
-        </div>
-        <!-- <div class="weather-icon"></div> -->
-        <div class="weather-main"></div>
-        <img src="" alt="" id="weather-icon">
+        </form>
       </div>
-      <script src="script.js"></script>
-    </body>
+      <div class="error-msg"></div>
+    </div>
+    <div class="info">
+      <div class="humidity-wrapper wrapper">
+        <i class="icons hidden fa-solid fa-droplet"></i>
+        <!-- <p class="humidity-icon"></p> -->
+        <p class="humidity"></p>
+      </div>
+      <div class="wind-wrapper wrapper">
+        <i class="icons hidden fa-solid fa-wind"></i>
+        <!-- <p class="wind-icon"></p> -->
+        <p class="wind"></i></p>
+      </div>
+      <div class="couds wrapper wrapper">
+        <i class="icons hidden fa-solid fa-cloud"></i>
+        <!-- <p class="clouds-icon"></p> -->
+        <p class="clouds"></p>
+      </div>
+    </div>
+    <!-- <div class="ld-spinner"></div> -->
+    <h2 class="temperature"></h2>
+    <p class="feels-like-temp"></p>
+    <div class="area">
+      <h2 class="city-name">Welcome to iKnorr's weather app!</h2>
+    </div>
+
+    <!-- <div class="weather-icon"></div> -->
+
+    <!-- <span class="material-icons md-48">
+      sunny
+    </span> -->
+    <div class="weather-main">
+      <div class="animation-weather">
+        <!-- <i class="cloud-icon fa-solid fa-cloud"></i>
+        <i class="lightning fa-solid fa-bolt-lightning"></i> -->
+      </div>
+    </div>
+    <img src="" alt="" id="weather-icon">
+  </div>
+  <script src="script.js"></script>
+</body>
+
 </html>
