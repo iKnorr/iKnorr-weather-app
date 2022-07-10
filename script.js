@@ -34,11 +34,10 @@ const weatherMain = document.querySelector('.weather-main');
 
 const locationBtn = document.querySelector('.location');
 
-// get local weather on page load
+// Geolocation
 let lat;
 let lon;
 
-// Geolocation
 const whereAmI = function () {
   const success = function (pos) {
     console.log(pos);
@@ -57,6 +56,7 @@ const whereAmI = function () {
   });
 };
 whereAmI();
+
 // Get data function
 const getData = function (data) {
   errorMsg.textContent = '';
@@ -88,16 +88,16 @@ const catchError = function (err) {
   }
 };
 
-geoLocBtn.addEventListener('click', () => {
-  whereAmI();
+// On window load
+window.addEventListener('load', () => {
   const getMyLocationWeather = async function () {
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=nizza&appid=${API}&units=metric`
       );
       if (!response.ok) {
         throw new Error(
-          `Something went wrong 😱 (${response.status}). Please turn on location device, reload page or use search.`
+          `Something went wrong 😱. Please turn on location device.`
         );
       }
       // ldSpinner.style.display = 'inline-block';
@@ -113,16 +113,16 @@ geoLocBtn.addEventListener('click', () => {
   getMyLocationWeather();
 });
 
-// On window load display local weather
-window.addEventListener('load', () => {
+geoLocBtn.addEventListener('click', () => {
+  whereAmI();
   const getMyLocationWeather = async function () {
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=nizza&appid=${API}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API}&units=metric`
       );
       if (!response.ok) {
         throw new Error(
-          `Something went wrong 😱 (${response.status}). Please turn on location device, reload page or use search.`
+          `Something went wrong 😱. Please turn on location device.`
         );
       }
       // ldSpinner.style.display = 'inline-block';
@@ -142,7 +142,6 @@ window.addEventListener('load', () => {
 searchBtn.addEventListener('click', function (e) {
   e.preventDefault();
   const searchInput = input.value;
-  console.log(searchInput);
 
   const getWeatherData = async function () {
     try {
@@ -150,7 +149,7 @@ searchBtn.addEventListener('click', function (e) {
         `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&appid=${API}&units=metric`
       );
       if (!response.ok) {
-        throw new Error(`City not found (${response.status})`);
+        throw new Error(`Something went wrong 😱. City not found.`);
       }
       // ldSpinner.style.display = 'inline-block';
       const data = await response.json();
