@@ -43,8 +43,6 @@ input:focus {
   display: grid;
   justify-items: center;
   grid-auto-flow: column;
-  /* display: flex;
-  justify-content: center; */
   align-items: center;
   margin-bottom: 3rem;
 }
@@ -73,7 +71,7 @@ input:focus {
 .ld-spinner:after {
   content: ' ';
   display: block;
-  width: 64px;
+  width: 65px;
   height: 64px;
   margin: 8px;
   border-radius: 50%;
